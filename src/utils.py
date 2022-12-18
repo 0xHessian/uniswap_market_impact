@@ -21,5 +21,5 @@ def get_swap_amount(desired_price, current_price, fee, X, Y):
         return [deltaX, np.int(0)]
     else:
         # We need to sell units of Y into the pool
-        deltaY = Y * (np.sqrt(current_price / desired_price) - 1) / fee
+        deltaY = Y * (np.sqrt(desired_price / current_price) - 1) / fee
         return [np.int(0), deltaY]
