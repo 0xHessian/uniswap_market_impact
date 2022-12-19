@@ -1,7 +1,7 @@
 from brownie import Contract
-from typing import Union
+from typing import Union, List
 import numpy as np
-from .utils import get_swap_amount, get_touch_price
+from .utils import get_swap_amount, get_touch_price, get_amount_out
 
 
 class UniswapV2Pool():
@@ -46,7 +46,7 @@ class UniswapV2Pool():
 
     def get_swap_amount(self, desired_price: Union[float, np.float]):
         current_price = self.price()
-        return get_swap_amount(desired_price, current_price, self.fee, *self.normalised_reserves)
+        return get_swap_amount(desired_price, current_price, self.fee, *self.reserves)
 
     def update_reserves(self):
         pool_reserves = self.contract.getReserves()
@@ -54,3 +54,7 @@ class UniswapV2Pool():
         self.reserves_last_updated = pool_reserves[2]
         self.normalised_reserves = [self.reserves[0] / (10 ** self.token0_decimals), self.reserves[1] / (10 ** self.token1_decimals)]
         return
+
+    def get_amount_out(self, amount_in: list):
+        # Note: This function accepts non-normalised inputs
+        return get_amount_out(amount_in, self.fee, *self.reserves)
