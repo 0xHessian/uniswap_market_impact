@@ -15,8 +15,18 @@ ETHERSCAN_TOKEN = 'ETHERSCAN_API_KEY'
 
 Unit tests for this library can be run using `python -m pytest tests`. 
 
-These unit tests require a local fork of the Ethereum network, which can be configured in CLI with the command:
+These unit tests require a local fork of the Ethereum network, which can be configured as follows:
 
 ```
-brownie networks add development uniswap-market-impact cmd=ganache-cli host=http://127.0.0.1 fork=https://eth-mainnet.g.alchemy.com/v2/[ALCHEMY-KEY]@16219272
-```
+development:
+- cmd: ganache-cli
+  cmd_settings:
+    accounts: 10
+    fork: https://eth-mainnet.g.alchemy.com/v2/[ALCHEMY-API-KEY]
+    mnemonic: brownie
+    port: 8545
+  host: http://127.0.0.1
+  id: uniswap-market-impact2
+  explorer: https://api.etherscan.io/api
+  name: uniswap-market-impact2
+ ```
