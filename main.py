@@ -22,11 +22,11 @@ def execute():
 
     '''
     Pool Name: USDC/WETH
-    Reserves in Pool: [41604502.976621, 35136.776561843944]
-    Current Pool Price: 0.0008445426347621195
-    Reversed Pool Price: 1184.0728446843514
+    Reserves in Pool: [41521488.740648, 35211.15755779401]
+    Current Pool Price: 0.000848022521006661
+    Reversed Pool Price: 1179.2139657009714
     Desired Reverse Price: 1200
-    Swap to Acquire Desired Reverse Price: [279718.92399491987, 0]
+    Swap to Acquire Desired Reverse Price: [365447913361.0411, 0]
     '''
     return
 
