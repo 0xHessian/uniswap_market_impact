@@ -23,3 +23,13 @@ def get_swap_amount(desired_price, current_price, fee, X, Y):
         # We need to sell units of Y into the pool
         deltaY = Y * (np.sqrt(desired_price / current_price) - 1) / fee
         return [np.int(0), deltaY]
+
+
+def get_amount_out(swap_path, fee, X, Y):
+    assert swap_path[0] == 0 or swap_path[1] == 0
+    if swap_path[1] == 0:
+        amount_out = (Y * swap_path[0] * fee) / (X + fee * swap_path[0])
+        return [0, amount_out]
+    else:
+        amount_out = (X * swap_path[1] * fee) / (Y + fee * swap_path[1])
+        return [amount_out, 0]
